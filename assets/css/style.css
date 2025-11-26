@@ -1,4 +1,7 @@
-html, body {
+@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap');
+
+html,
+body {
     height: 100%;
     margin: 0;
 }
@@ -56,7 +59,7 @@ input[type="search"]::-webkit-search-results-decoration {
     display: flex;
     justify-content: center;
     transition: transform 0.4s ease, opacity 0.4s ease;
-    opacity: 0.4; 
+    opacity: 0.4;
     width: 450px !important;
 }
 
@@ -71,7 +74,6 @@ input[type="search"]::-webkit-search-results-decoration {
     overflow: hidden;
     position: relative;
     transition: transform 0.45s ease, filter 0.4s ease;
-    box-shadow: none;
     background-color: #000;
 }
 
@@ -83,30 +85,61 @@ input[type="search"]::-webkit-search-results-decoration {
     display: block;
 }
 
-.movie-info {
+.rating-top {
     position: absolute;
-    bottom: 15px;
-    left: 15px;
+    top: 10px;
+    right: 10px;
     z-index: 10;
+}
+
+.rating-top .rating {
+    font-size: 1rem;
+    font-weight: bold;
+    padding: 5px 8px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    background: rgba(0, 0, 0, 0.7);
     color: #fff;
 }
 
-.movie-info h3 {
-    margin: 0;
+.movie-info-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    padding: 10px 15px;
+     display: flex;
+    color: #fff;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.movie-info-overlay h3 {
     font-size: 1.3rem;
     font-weight: 600;
-}
-
-.movie-info .rating {
-    font-size: 1.1rem;
-    font-weight: bold;
-    padding: 3px 10px;
-    background: rgba(0,0,0,0.6);
+    background: rgba(0, 0, 0, 0.7);
     border-radius: 8px;
-    margin-bottom: 8px;
-    display: inline-block;
+    padding: 3px 8px;
+    line-height: 1.2;
+    word-wrap: break-word;
+    margin: 0;
 }
 
+.movie-meta {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.meta-item {
+    padding: 3px 8px;
+    background: rgba(0, 0, 0, 0.7);
+    border-radius: 8px;
+    font-size: 0.95rem;
+    white-space: nowrap;
+}
 
 .swiper-slide-active .movie-card {
     transform: scale(1.25) translateY(-10px);
@@ -123,3 +156,7 @@ input[type="search"]::-webkit-search-results-decoration {
     transform: perspective(600px) rotateY(8deg) scale(1.28);
 }
 
+.spinner-grow {
+    width: 1.2rem;
+    height: 1.2rem;
+}
