@@ -5,15 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Movie Explorer</title>
-    <script src="https://unpkg.com/lucide@latest"></script>
-    <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            lucide.createIcons();
-        });
-    </script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
 
@@ -30,7 +25,7 @@
                         placeholder="Search Movies">
                     <span id="clearSearch" class="input-group-text no-left-border position-relative"
                         style="width: 40px;">
-                        <i id="clearSearchIcon" class="bi bi-x-circle"></i>
+                        <i id="clearSearchIcon" class="bi bi-x-circle visually-hidden"></i>
                         <div class="searchLoaderWrapper">
                             <div id="searchLoader"></div>
                         </div>
@@ -39,96 +34,22 @@
             </div>
         </div>
 
+        <div id="loading" class="d-flex flex-column align-items-center justify-content-center py-5 mt-lg-5">
+            <h1 class="mb-5 text-white mt-lg-5" style="font-family: 'Abril Fatface', cursive;">Loading Movies , Please
+                wait</h1>
+
+            <div class="d-flex flex-row gap-1">
+                <div class="spinner-grow text-light"></div>
+                <div class="spinner-grow text-light"></div>
+                <div class="spinner-grow text-light"></div>
+                <div class="spinner-grow text-light"></div>
+                <div class="spinner-grow text-light"></div>
+                <div class="spinner-grow text-light"></div>
+            </div>
+        </div>
 
         <div class="swiper movieSwiper">
-            <div class="swiper-wrapper" style="width: fit-content; margin-left: 747px !important;">
-
-                <div class="swiper-slide">
-                    <div class="movie-card">
-                        <img src="assets/images/inteception.jpeg">
-                        <div class="movie-info">
-                            <span class="rating">9.1</span>
-                            <h3>Inception</h3>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="swiper-slide">
-                    <div class="movie-card">
-                        <img src="assets/images/Interstellar.jpeg">
-                        <div class="movie-info">
-                            <span class="rating">8.7</span>
-                            <h3>Interstellar</h3>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="swiper-slide">
-                    <div class="movie-card">
-                        <img src="assets/images/the-Last-of-Us.jpeg">
-                        <div class="movie-info">
-                            <span class="rating">7.3</span>
-                            <h3>The Last of Us</h3>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="swiper-slide">
-                    <div class="movie-card">
-                        <img src="assets/images/ted-lasso.jpg">
-                        <div class="movie-info">
-                            <span class="rating">8.5</span>
-                            <h3>Ted Lasso</h3>
-                        </div>
-                    </div>
-                </div>
-
-
-                <div class="swiper-slide">
-                    <div class="movie-card">
-                        <img src="assets/images/the-strangers-chapter-2.jpeg">
-                        <div class="movie-info">
-                            <span class="rating">9.1</span>
-                            <h3>The Strangers: Chapter 2</h3>
-                        </div>
-                    </div>
-                </div>
-
-
-                <div class="swiper-slide">
-                    <div class="movie-card">
-                        <img src="assets/images/Interstellar.jpeg">
-                        <div class="movie-info">
-                            <span class="rating">8.7</span>
-                            <h3>Interstellar</h3>
-                        </div>
-                    </div>
-                </div>
-
-
-                <div class="swiper-slide">
-                    <div class="movie-card">
-                        <img src="assets/images/the-Last-of-Us.jpeg">
-                        <div class="movie-info">
-                            <span class="rating">7.3</span>
-                            <h3>The Last of Us</h3>
-                        </div>
-                    </div>
-                </div>
-
-
-                <div class="swiper-slide">
-                    <div class="movie-card">
-                        <img src="assets/images/ted-lasso.jpg">
-                        <div class="movie-info">
-                            <span class="rating">8.5</span>
-                            <h3>Ted Lasso</h3>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-
+            <div class="swiper-wrapper"></div>
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
