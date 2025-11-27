@@ -274,3 +274,9 @@ searchInput.addEventListener("keydown", function (e) {
         setSerachedMovieToSwiper(this.value);
     }
 });
+
+document.getElementById("clearSearch").addEventListener("click", function () {
+    searchInput.value = "";
+    loader.style.display = "none";
+    movieList.style.display = "none";
+});
