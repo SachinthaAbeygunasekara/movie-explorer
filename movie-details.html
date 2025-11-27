@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Movie Details</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            color: #fff;
+            padding: 20px;
+            background-image: url('/assets/images/radiation_glow.png');
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        #backButton {
+            margin-bottom: 20px;
+            padding: 8px 12px;
+            cursor: pointer;
+        }
+
+        .right-panel {
+            background: rgba(61, 65, 66, 0.35);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 8px 32px rgba(31, 38, 135, 0.37);
+            padding: 27px;
+            border-radius: 15px;
+        }
+
+        .text-light-green {
+            color: rgb(106, 192, 69);
+        }
+
+        .text-pink {
+            color: #FF3DA5;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container py-4">
+
+        <button id="backButton" class="btn btn-outline-light mb-3">← Back</button>
+
+        <div class="row g-4">
+
+            <div class="col-md-4 text-center">
+                <img id="moviePoster" class="img-fluid rounded shadow mt-1" alt="Poster">
+                <a id="watchNowButton" href="#" target="_blank" class="btn btn-primary mt-3 w-100 pt-3 pb-3">Watch
+                    Now</a>
+            </div>
+
+            <div class="col-md-8 ps-5 right-panel">
+
+                <h1 id="movieTitle" class="mb-3"></h1>
+                <div class="d-flex flex-column gap-3">
+                    <div><strong>Language:</strong> <span id="movieLanguage"></span></div>
+                    <div><strong>Runtime:</strong> <span id="movieRuntime"></span></div>
+                    <div><strong>Genre:</strong> <span id="movieGenre"></span></div>
+                    <div><strong>Director:</strong> <span id="movieDirector"></span></div>
+                    <div><strong>Writer:</strong> <span id="movieWriter"></span></div>
+                    <div><strong>Actors:</strong> <span id="movieActors"></span></div>
+                    <div><strong>Released:</strong> <span id="movieReleased"></span></div>
+                    <div class="d-flex align-items-center gap-2">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/6/69/IMDB_Logo_2016.svg" width="40">
+                        <span id="movieRating"></span>
+                        <i class="bi bi-star-fill text-light-green"></i>
+                    </div>
+                    <div class="d-flex align-items-center gap-2">
+                        <i class="bi bi-heart-fill text-pink"></i>
+                        <span id="movieimdbVotes"></span>
+                    </div>
+                    <div><strong>Country:</strong> <span id="movieCountry"></span></div>
+                    <div><strong>Metascore:</strong> <span id="movieMetascore"></span> <i
+                            class="bi bi-speedometer2 text-warning ms-1"></i></div>
+                    <div><strong>Awards:</strong> <span id="movieAwards"></span> <i
+                            class="bi bi-trophy-fill text-warning ms-1"></i></div>
+                    <div><strong>Box Office:</strong> <span id="movieBoxOffice"></span> <i
+                            class="bi bi-cash-stack text-light-green ms-1"></i></div>
+                    <div><strong>Plot:</strong> <span id="moviePlot"></span></div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+    <script src="assets/js/movie-details.js"></script>
+</body>
+
+</html>

@@ -67,6 +67,15 @@ function addMovieToSwiper(movie, poster) {
         </div>
     `;
 
+    slide.addEventListener('click', () => {
+        const movieDetails = {
+            ...movie,
+            Poster: poster
+        };
+        sessionStorage.setItem('selectedMovie', JSON.stringify(movieDetails));
+        window.location.href = 'movie-details.html';
+    });
+
     slide.appendChild(card);
 
     if (typeof swiper !== 'undefined' && swiper) {
