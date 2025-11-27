@@ -1,123 +1,132 @@
-# 🎬 Movie Explorer (OMDb API)
-A fully responsive movie discovery website built using **HTML**, **CSS**, and **JavaScript**, powered by the **OMDb API**. The application allows users to search for movies, browse by keywords, discover random movies, and view full details including plot, actors, ratings, and posters.
+# 🎬 Movie Explorer (OMDb + TMDb)
+
+A fully responsive movie discovery website built using **HTML**, **CSS**, and **JavaScript**, powered by the **OMDb API** and **TMDb API**. Users can search movies, browse by keywords, discover random movies, and view full details including plot, actors, ratings, posters, trailers, and streaming providers.
 
 ---
 
 ## 🌟 Features
-### 🔍 Movie Search  
-Search movies by exact title and get full details instantly.
 
-### 🧩 Keyword-Based Search  
-Search by generic keywords (e.g., "love", "war", "batman") to browse multiple results.
+### 🔍 Movie Search
+Search movies by exact title and get detailed information.
 
-### 🎲 Random Movie Generator  
-A “Discover Movie” button randomly picks a movie from a curated list or random keywords.
+### 🧩 Keyword-Based Search
+Search movies by generic keywords (e.g., "love", "war", "batman") to browse multiple results.
 
-### 🆔 IMDb ID Lookup  
-Search movies directly using their IMDb ID (e.g., `tt3896198`).
+### 🏠 Homepage
+- Displays popular movies in a **Swiper.js carousel**.
+- Poster, IMDb rating, release year, runtime displayed on hover.
+- Click on a movie to go to the **Movie Details** page.
 
-### 📄 Movie Details Page  
-Displays:
-- Title  
-- Year  
-- Genre  
-- Director  
-- Actors  
-- Plot  
-- Poster  
-- IMDb Rating  
-
-### ⭐ Top Rated / Trending Movies  
-A curated collection of popular movies displayed on the home page.
+### 📄 Movie Details Page
+- Title, Year, Language, Runtime, Genre, Director, Writer, Actors, Plot
+- Poster
+- IMDb Rating & Votes, Metascore
+- Awards, Box Office, Country, Released Date
+- **YouTube Trailer** embedded
+- **Watch Now** button with streaming provider (if available)
 
 ---
 
-## 🔗 API Used
-### **OMDb API**  
-https://www.omdbapi.com/
+## 🔗 APIs Used
 
-Requires an API key.
-
-Example request:
-```
+### OMDb API
+- Used for movie search, autocomplete, and detailed movie info.
+- [OMDb API](https://www.omdbapi.com/)
+- Requires an API key:
+```http
 https://www.omdbapi.com/?apikey=YOUR_API_KEY&t=Inception
+```
+
+### TMDb API
+- Used for movie posters, trailers, and streaming providers.
+- [TMDb API](https://www.themoviedb.org/documentation/api)
+- Requires an API key:
+```http
+https://api.themoviedb.org/3/find/{imdbID}?api_key=YOUR_TMDB_KEY&external_source=imdb_id
 ```
 
 ---
 
 ## 🛠️ Technologies Used
-- HTML5  
-- CSS3  
-- JavaScript (Fetch API)  
-- Figma (UI Design)  
-- Git & GitHub  
-- GitHub Pages Deployment  
+
+- HTML5
+- CSS3
+- JavaScript (ES6+)
+- Bootstrap 5
+- Swiper.js
+- OMDb & TMDb APIs
+- Git & GitHub
+- GitHub Pages Deployment
 
 ---
 
-## 📁 Folder Structure
+## 📁 Project Structure
+
 ```
-movie-explorer-omdb/
-│── index.html
-│── details.html
-│── css/
-│    └── styles.css
-│── js/
-│    ├── app.js
-│    ├── details.js
+movie-explorer/
+│── index.html                  # Homepage
+│── movie-details.html          # Movie details page
 │── assets/
+│    ├── css/
+│    │    └── style.css
+│    ├── js/
+│    │    ├── app.js
+│    │    └── movie-details.js
 │    ├── images/
-│    └── icons/
 │── README.md
 ```
 
 ---
 
 ## 🚀 Run Locally
+
 1. Clone the repository:
-```
-git clone https://github.com/your-username/movie-explorer-omdb.git
+```bash
+git clone https://github.com/SachinthaAbeygunasekara/movie-explorer.git
 ```
 
-2. Open the folder
+2. Open the project folder.
 
-3. Run the website by opening:
-```
-index.html
+3. Open `index.html` in your browser:
+```bash
+open index.html
 ```
 
 ---
 
-## 🌍 Deploy Using GitHub Pages
-1. Go to **Settings → Pages**  
-2. Select:  
-   - **Branch:** main  
-   - **Folder:** root  
-3. Save  
+## 🌍 GitHub Pages Deployment
+
+1. Go to **Settings → Pages** in your repository.
+2. Select:
+   - **Branch:** main
+   - **Folder:** root
+3. Save.
 4. Your website will be live at:
 ```
-https://your-username.github.io/movie-explorer-omdb/
+https://your-username.github.io/movie-explorer/
 ```
 
 ---
 
-## 🖼️ Screenshots (Add your own)
-### Homepage  
-*(Add image)*
+## 🖼️ Screenshots
 
-### Search Results  
-*(Add image)*
+### Homepage
+<img width="1919" height="910" alt="image" src="https://github.com/user-attachments/assets/32eeba00-f48d-4f46-afa7-ff580cffa21c" />
 
-### Movie Details Page  
-*(Add image)*
+### Search Results
+<img width="1919" height="909" alt="image" src="https://github.com/user-attachments/assets/01686348-af1c-4184-9fdb-e940e4f45d96" />
+
+### Movie Details Page
+<img width="859" height="825" alt="image" src="https://github.com/user-attachments/assets/5593d3a4-9c11-49b1-9c81-21214ab2c3a8" />
 
 ---
 
 ## 🙌 Author
-Created by **Sachintha**  
-Project for ICET – Final Project: API-Based Web Application
+
+Created by **Sachintha**
 
 ---
 
 ## 📄 License
+
 This project is for educational purposes only.
