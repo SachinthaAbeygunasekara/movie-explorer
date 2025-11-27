@@ -16,21 +16,28 @@
     <div class="container-fluid">
 
         <div class="position-relative" style="min-height: 200px;">
-            <div class="position-absolute top-0 end-0 w-25 me-4">
+            <div class="position-absolute top-0 end-0 w-25 me-4 d-flex flex-column">
                 <div class="input-group mt-5 float-end">
                     <span class="input-group-text no-right-border">
                         <i class="bi bi-search"></i>
                     </span>
                     <input id="searchInput" class="form-control no-right-border search-bar" type="search"
-                        placeholder="Search Movies">
+                        placeholder="Search Movies" list="movies">
+
                     <span id="clearSearch" class="input-group-text no-left-border position-relative"
                         style="width: 40px;">
                         <i id="clearSearchIcon" class="bi bi-x-circle visually-hidden"></i>
                         <div class="searchLoaderWrapper">
-                            <div id="searchLoader"></div>
+                            <div class="spinner-border spinner-border-sm text-light"></div>
                         </div>
                     </span>
                 </div>
+                <div class="w-100 mt-2">
+                    <ul id="movies" class="list-group position-absolute w-100 shadow-lg bg-transparent"
+                        style="z-index: 2000; display:none;">
+                    </ul>
+                </div>
+
             </div>
         </div>
 

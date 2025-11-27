@@ -2,6 +2,12 @@ const TMDB_KEY = "61167bb8f939b55724390c6e71df0753";
 const API_KEY = "533f7764";
 const swiperWrapper = document.querySelector(".swiper-wrapper");
 var swiper;
+const searchInput = document.getElementById("searchInput");
+const movieList = document.getElementById("movies");
+const clearButton = document.getElementById("clearSearchIcon");
+const loader = document.querySelector(".searchLoaderWrapper");
+
+let movieCache = [];
 
 async function fetchMovieDetails(title) {
     try {
@@ -155,3 +161,65 @@ async function loadPopularMovies() {
 }
 
 loadPopularMovies();
+
+async function searchMovie(query) {
+    if (query.length < 2) return; // avoid useless API calls
+
+    try {
+        const response = await fetch(`http://www.omdbapi.com/?apikey=${API_KEY}&s=${query}`);
+        const data = await response.json();
+
+        movieCache = data.Search || [];
+        updateDropdown(movieCache);
+
+    } catch (err) {
+        console.error("Error fetching movie detail:", query, err);
+    } finally {
+        loader.style.display = "none";
+    }
+}
+
+function updateDropdown(list) {
+    movieList.innerHTML = "";
+
+    if (!list.length) {
+        movieList.style.display = "none";
+        return;
+    }
+
+    list.forEach(movie => {
+        const li = document.createElement("li");
+        li.classList.add("list-group-item", "d-flex", "align-items-center", "gap-2", "bg-transparent", "text-white", "border-0");
+
+        li.innerHTML = `
+        <img src="${(movie.Poster && movie.Poster !== 'N/A') ? movie.Poster : '/assets/images/default-movie.png'}"
+            style="width:30px; height:40px; object-fit:cover;" onerror="this.src='/assets/images/default-movie.png';">
+            <div>
+                <div><strong>${movie.Title}</strong></div>
+                <small>${movie.Year}</small>
+            </div>
+        `;
+
+        li.onclick = () => {
+            searchInput.value = movie.Title;
+            movieList.style.display = "none";
+        };
+
+        movieList.appendChild(li);
+    });
+
+    movieList.style.display = "block";
+}
+
+searchInput.addEventListener("input", function () {
+    if (this.value.trim() === '') {
+        clearButton.classList.add("visually-hidden");
+        movieList.style.display = "none";
+        loader.style.display = "none";
+    } else {
+        clearButton.classList.remove("visually-hidden");
+        loader.style.display = "flex";
+        searchMovie(this.value);
+    }
+
+});
