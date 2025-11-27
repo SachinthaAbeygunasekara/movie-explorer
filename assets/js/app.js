@@ -244,6 +244,7 @@ async function setSerachedMovieToSwiper(movie) {
                 requestAnimationFrame(() => swiper.update());
             });
             searchInput.value = "";
+            clearButton.classList.add("visually-hidden");
         }
 
 
