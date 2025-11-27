@@ -203,12 +203,53 @@ function updateDropdown(list) {
         li.onclick = () => {
             searchInput.value = movie.Title;
             movieList.style.display = "none";
+            setSerachedMovieToSwiper(movie);
         };
 
         movieList.appendChild(li);
     });
 
     movieList.style.display = "block";
+}
+
+async function setSerachedMovieToSwiper(movie) {
+    try {
+        const omdbResponse = await fetch(
+            `http://www.omdbapi.com/?apikey=${API_KEY}&i=${movie.imdbID}&plot=short`
+        );
+        const movieData = await omdbResponse.json();
+
+        if (movieData.Response !== "True") {
+            return;
+        }
+
+        const tmdbResponse = await fetch(
+            `https://api.themoviedb.org/3/find/${movie.imdbID}?api_key=${TMDB_KEY}&external_source=imdb_id`
+        );
+        const tmdbData = await tmdbResponse.json();
+
+        const posterUrl = tmdbData.movie_results?.[0]?.poster_path
+            ? `https://image.tmdb.org/t/p/w500${tmdbData.movie_results[0].poster_path}`
+            : tmdbData.tv_results?.[0]?.poster_path
+                ? `https://image.tmdb.org/t/p/w500${tmdbData.tv_results[0].poster_path}`
+                : "/assets/images/default-movie.png";
+
+        const newSlide = addMovieToSwiper(movieData, posterUrl);
+
+        if (swiper) {
+            requestAnimationFrame(() => {
+                swiper.slideToLoop(swiper.slides.length - 1, 400);
+                swiper.autoplay.stop();
+                // setTimeout(() => swiper.autoplay.start(), 5000);
+                requestAnimationFrame(() => swiper.update());
+            });
+            searchInput.value = "";
+        }
+
+
+    } catch (err) {
+        console.error("Error fetching movie data:", err);
+    }
 }
 
 searchInput.addEventListener("input", function () {
@@ -222,4 +263,20 @@ searchInput.addEventListener("input", function () {
         searchMovie(this.value);
     }
 
+});
+
+searchInput.addEventListener("change", function () {
+    setSerachedMovieToSwiper(this.value);
+});
+
+searchInput.addEventListener("keydown", function (e) {
+    if (e.key === "Enter") {
+        setSerachedMovieToSwiper(this.value);
+    }
+});
+
+document.getElementById("clearSearch").addEventListener("click", function () {
+    searchInput.value = "";
+    loader.style.display = "none";
+    movieList.style.display = "none";
 });
