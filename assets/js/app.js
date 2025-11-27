@@ -1,5 +1,5 @@
 const TMDB_KEY = "61167bb8f939b55724390c6e71df0753";
-const API_KEY = "b8e38c0c";
+const API_KEY = "533f7764";
 const swiperWrapper = document.querySelector(".swiper-wrapper");
 var swiper;
 
@@ -62,7 +62,14 @@ function addMovieToSwiper(movie, poster) {
     `;
 
     slide.appendChild(card);
-    swiperWrapper.appendChild(slide);
+
+    if (typeof swiper !== 'undefined' && swiper) {
+        swiper.appendSlide(slide);
+    } else {
+        swiperWrapper.appendChild(slide);
+    }
+
+    return slide;
 }
 
 function renderMoviesToSwiper(movieList, posterList) {
@@ -86,7 +93,7 @@ function renderMoviesToSwiper(movieList, posterList) {
 }
 
 function initSwiper() {
-    new Swiper('.swiper', {
+    swiper = new Swiper('.swiper', {
         slidesPerView: 'auto',
         spaceBetween: 10,
         centeredSlides: true,
@@ -101,6 +108,20 @@ function initSwiper() {
             enabled: true,
             onlyInViewport: true
         }
+    });
+
+    swiper.on('touchEnd', () => {
+        swiper.autoplay.start();
+    });
+
+    swiper.on('slideChangeTransitionEnd', () => {
+        if (!swiper.animating && swiper.allowSlideNext) {
+            swiper.autoplay.start();
+        }
+    });
+
+    swiper.on('keyPress', () => {
+        swiper.autoplay.start();
     });
 }
 
