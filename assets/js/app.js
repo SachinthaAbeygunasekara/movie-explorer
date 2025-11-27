@@ -62,7 +62,14 @@ function addMovieToSwiper(movie, poster) {
     `;
 
     slide.appendChild(card);
-    swiperWrapper.appendChild(slide);
+
+    if (typeof swiper !== 'undefined' && swiper) {
+        swiper.appendSlide(slide);
+    } else {
+        swiperWrapper.appendChild(slide);
+    }
+
+    return slide;
 }
 
 function renderMoviesToSwiper(movieList, posterList) {
