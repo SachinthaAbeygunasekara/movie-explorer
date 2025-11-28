@@ -12,7 +12,7 @@ let movieCache = [];
 async function fetchMovieDetails(title) {
     try {
         const response = await fetch(
-            `http://www.omdbapi.com/?apikey=${API_KEY}&t=${title}`
+            `https://www.omdbapi.com/?apikey=${API_KEY}&t=${title}`
         );
         return await response.json();
     } catch (err) {
@@ -175,7 +175,7 @@ async function searchMovie(query) {
     if (query.length < 2) return; // avoid useless API calls
 
     try {
-        const response = await fetch(`http://www.omdbapi.com/?apikey=${API_KEY}&s=${query}`);
+        const response = await fetch(`https://www.omdbapi.com/?apikey=${API_KEY}&s=${query}`);
         const data = await response.json();
 
         movieCache = data.Search || [];
@@ -224,7 +224,7 @@ function updateDropdown(list) {
 async function setSerachedMovieToSwiper(movie) {
     try {
         const omdbResponse = await fetch(
-            `http://www.omdbapi.com/?apikey=${API_KEY}&i=${movie.imdbID}&plot=short`
+            `https://www.omdbapi.com/?apikey=${API_KEY}&i=${movie.imdbID}&plot=short`
         );
         const movieData = await omdbResponse.json();
 
