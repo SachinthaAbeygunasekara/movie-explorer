@@ -4,7 +4,7 @@ const TMDB_KEY = "61167bb8f939b55724390c6e71df0753";
 const imdbID = movie.imdbID;
 
 if (movie) {
-    document.getElementById("moviePoster").src = posterBase + movie.Poster || '/assets/images/default-movie.png';
+    document.getElementById("moviePoster").src = posterBase + movie.Poster || './assets/images/default-movie.png';
     document.getElementById("movieTitle").textContent = movie.Title + ' (' + movie.Year + ')';
     document.getElementById("movieRuntime").textContent = formatTime(movie.Runtime);
     document.getElementById("movieGenre").textContent = movie.Genre;
