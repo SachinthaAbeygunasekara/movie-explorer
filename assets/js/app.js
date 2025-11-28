@@ -201,8 +201,8 @@ function updateDropdown(list) {
         li.classList.add("list-group-item", "d-flex", "align-items-center", "gap-2", "bg-transparent", "text-white", "border-0");
 
         li.innerHTML = `
-        <img src="${(movie.Poster && movie.Poster !== 'N/A') ? movie.Poster : '/assets/images/default-movie.png'}"
-            style="width:30px; height:40px; object-fit:cover;" onerror="this.src='/assets/images/default-movie.png';">
+        <img src="${(movie.Poster && movie.Poster !== 'N/A') ? movie.Poster : './assets/images/default-movie.png'}"
+            style="width:30px; height:40px; object-fit:cover;" onerror="this.src='./assets/images/default-movie.png';">
             <div>
                 <div><strong>${movie.Title}</strong></div>
                 <small>${movie.Year}</small>
@@ -241,7 +241,7 @@ async function setSerachedMovieToSwiper(movie) {
             ? `https://image.tmdb.org/t/p/w500${tmdbData.movie_results[0].poster_path}`
             : tmdbData.tv_results?.[0]?.poster_path
                 ? `https://image.tmdb.org/t/p/w500${tmdbData.tv_results[0].poster_path}`
-                : "/assets/images/default-movie.png";
+                : "./assets/images/default-movie.png";
 
         const newSlide = addMovieToSwiper(movieData, posterUrl);
 
